@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 
 export default function LoginPage() {
   const { login } = useSession();
-  const router = useRouter();
+  const router = useRouter()
 
   const onSubimt = ({ login: l, password }: LoginInput) => {
     const ok = login(l, password);
