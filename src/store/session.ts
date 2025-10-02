@@ -8,7 +8,7 @@ type SessionState = {
   current?: User | null;
   register: (u: User) => void;
   login: (login: string, password: string) => boolean;
-  logout: () => void;
+  logout: () => void
 };
 
 export const useSession = create<SessionState>()(
