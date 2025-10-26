@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { v4 as uuid } from 'uuid';
 
@@ -225,6 +226,13 @@ export default function Home() {
               className="px-3 py-2 text-sm rounded-xl border border-emerald-300 dark:border-emerald-700 bg-emerald-500/10 hover:bg-emerald-500/20"
             >
               + Nova
+            </button>
+            <button
+              className="px-3 py-2 text-sm rounded-xl border border-blue-300 dark:border-blue-700 bg-blue-500/10 hover:bg-blue-500/20 text-blue-700 dark:text-blue-200"
+            >
+              <Link href="/login" className="block w-full h-full">
+                Login
+              </Link>
             </button>
           </div>
         </div>

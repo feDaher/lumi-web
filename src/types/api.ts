@@ -26,3 +26,9 @@ export type AlertDTO = {
   createdAt: string;
   notes?: string;
 };
+
+export type ErrorResponse = {
+  error?: string;
+  message?: string;
+  issues?: unknown;
+};
