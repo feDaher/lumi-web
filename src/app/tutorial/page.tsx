@@ -17,7 +17,7 @@ export default function TutorialPage() {
           
           <ImageSelector />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Card 1 */}
+
             <div className="bg-white p-8 rounded-lg shadow-md border border-gray-200 flex flex-col items-center">
               <div className="relative w-[70px] h-[70px] mb-4 flex-shrink-0">
                 <Image
@@ -38,7 +38,6 @@ export default function TutorialPage() {
               </p>
             </div>
 
-            {/* Card 2 */}
             <div className="bg-white p-8 rounded-lg shadow-md border border-gray-200 flex flex-col items-center">
               <div className="relative w-[70px] h-[70px] mb-4 flex-shrink-0">
                 <Image
@@ -59,7 +58,6 @@ export default function TutorialPage() {
               </p>
             </div>
 
-            {/* Card 3 */}
             <div className="bg-white p-8 rounded-lg shadow-md border border-gray-200 flex flex-col items-center">
               <div className="relative w-[70px] h-[70px] mb-4 flex-shrink-0">
                 <Image

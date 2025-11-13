@@ -5,20 +5,28 @@ import Image from "next/image"
 
 const tutorialImages = [
   {
-    src: "/tutorial_images/HERO SECTION.png", // Imagem na pasta /public
-    alt: "Imagem de exemplo 1",
+    src: "/tutorial_images/hero_section.png",
+    alt: "Tela inicial do LUMI com opções de login e cadastro",
+    description:
+      "Ao entrar no site LUMI, cadastre-se ou faça o login para desbloquear o download do aplicativo.",
   },
   {
-    src: "/tutorial_images/REGISTER PAGE.png", // Imagem na pasta /public
-    alt: "Imagem de exemplo 2",
+    src: "/tutorial_images/register_page.png",
+    alt: "Tela de cadastro do LUMI",
+    description:
+      "Ao aperta em cadastro, ira aparecer esta tela, aonde você deverá colocar alguns de seus dados pessoais.",
   },
   {
-    src: "/tutorial_images/HERO SECTION2.png", // Imagem na pasta /public
-    alt: "Imagem de exemplo 3",
+    src: "/tutorial_images/hero_section_2.png",
+    alt: "Tela principal logada com botão de download",
+    description:
+      "Ao realizar o login ou o cadastro você era voltar a tela principal e iria aparecer esse botão, aperte-o.",
   },
   {
-    src: "/tutorial_images/HERO SECTION  DOWNLOAD.png", // Imagem na pasta /public
-    alt: "Imagem de exemplo 4",
+    src: "/tutorial_images/download.png",
+    alt: "Janela de download do aplicativo LUMI",
+    description:
+      "Irá aparecer está janela, ao clicar neste botão ira fazer o download do aplicativo LUMI.",
   },
 ]
 
@@ -26,82 +34,37 @@ export default function ImageSelector() {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const handlePrevious = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1)
-    }
+    setCurrentIndex((prev) => Math.max(prev - 1, 0))
   }
 
   const handleNext = () => {
-    if (currentIndex < tutorialImages.length - 1) {
-      setCurrentIndex(currentIndex + 1)
-    }
+    setCurrentIndex((prev) => Math.min(prev + 1, tutorialImages.length - 1))
   }
 
   const isAtFirstImage = currentIndex === 0
   const isAtLastImage = currentIndex === tutorialImages.length - 1
 
   return (
-    <div className="w-full mb-16 rounded-lg shadow-xl overflow-hidden max-w-4xl mx-auto bg-gray-50 p-6">
+    <div className="w-Afull mb-16 rounded-lg shadow-xl overflow-hidden max-w-4xl mx-auto bg-gray-50 p-6">
       <div className="relative w-full h-[600px] rounded-lg overflow-hidden bg-black">
         <Image
           src={tutorialImages[currentIndex].src}
           alt={tutorialImages[currentIndex].alt}
           fill
-          className="object-cover transition-opacity duration-300"
+          className="object-contain transition-opacity duration-300"
         />
 
-        {currentIndex === 0 && (
-          <div
-            className="absolute bottom-0 left-0 w-full p-6 
-                       bg-gradient-to-t from-black/80 to-transparent"
-          >
-            <p className="text-white text-lg font-semibold text-left shadow-lg max-w-lg">
-              Ao entrar no site LUMI, cadastre-se ou faça o login caso você
-              ainda não possua para desbloquear o download do aplicativo.
-            </p>
-          </div>
-        )}
-
-        {currentIndex === 1 && (
-          <div
-            className="absolute bottom-0 left-0 w-full p-6 
-                       bg-gradient-to-t from-black/80 to-transparent"
-          >
-            <p className="text-white text-lg font-semibold text-left shadow-lg max-w-lg">
-              Ao aperta em cadastro, ira aparecer esta tela, aonde você deverá
-              colocar alguns de seus dados pessoais.
-            </p>
-          </div>
-        )}
-
-        {currentIndex === 2 && (
-          <div
-            className="absolute bottom-0 left-0 w-full p-6 
-                       bg-gradient-to-t from-black/80 to-transparent"
-          >
-            <p className="text-white text-lg font-semibold text-left shadow-lg max-w-lg">
-              Ao realizar o login ou o cadastro você era voltar a tela principal
-              e iria aparecer esse botão, aperte-o.
-            </p>
-          </div>
-        )}
-
-        {currentIndex === 3 && (
-          <div
-            className="absolute bottom-0 left-0 w-full p-6 
-                       bg-gradient-to-t from-black/80 to-transparent"
-          >
-            <p className="text-white text-lg font-semibold text-left shadow-lg max-w-lg">
-              Irá aparecer está janela, ao clicar neste botão ira fazer o
-              download do aplicativo LUMI.
-            </p>
-          </div>
-        )}
+        <div
+          className="absolute bottom-0 left-0 w-full p-6 
+                     bg-gradient-to-t from-black/80 to-transparent"
+        >
+          <p className="text-white text-lg font-semibold text-left shadow-lg max-w-lg">
+            {tutorialImages[currentIndex].description}
+          </p>
+        </div>
       </div>
 
-      {/* 2. Os Controles (Botões) */}
       <div className="flex items-center justify-between mt-4">
-        {/* Botão Voltar */}
         <button
           onClick={handlePrevious}
           disabled={isAtFirstImage}
@@ -109,7 +72,6 @@ export default function ImageSelector() {
                      disabled:bg-gray-300 disabled:cursor-not-allowed 
                      transition-colors duration-200"
         >
-          {/* Ícone de seta (SVG) */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -127,7 +89,6 @@ export default function ImageSelector() {
           Voltar
         </button>
 
-        {/* Indicador de "Seleção" (bolinhas) */}
         <div className="flex gap-2">
           {tutorialImages.map((_, index) => (
             <div
@@ -139,7 +100,6 @@ export default function ImageSelector() {
           ))}
         </div>
 
-        {/* Botão Seguir */}
         <button
           onClick={handleNext}
           disabled={isAtLastImage}
@@ -148,7 +108,6 @@ export default function ImageSelector() {
                      transition-colors duration-200"
         >
           Seguir
-          {/* Ícone de seta (SVG) */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
