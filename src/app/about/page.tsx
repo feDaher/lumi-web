@@ -11,7 +11,7 @@ export default function SobreLumi() {
                     <div className="flex-1 flex justify-center items-center">
                         <div className="relative w-[200px] sm:w-[250px] md:w-[300px] lg:w-[350px] xl:w-[400px] h-auto aspect-square">
                             <Image
-                                src="/avatar lumi.png"
+                                src="/avatar_lumi.png"
                                 alt="Avatar Lumi"
                                 width={500}
                                 height={500}
