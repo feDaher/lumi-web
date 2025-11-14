@@ -1,8 +1,11 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@custom-variant dark (&:where(.dark, .dark *));
-
-@layer base {
-  button { @apply cursor-pointer; }
-  button:disabled { @apply cursor-not-allowed opacity-50; }
+/* Garante que o corpo da página não tem cor de fundo padrão */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: transparent; 
 }
