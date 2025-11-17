@@ -17,12 +17,15 @@ export const registerSchema = z
         email: z.string().email("Informe um e-mail válido."),
         password: z
             .string()
-            .min(5, "A senha deve conter no mínimo 5 caracteres.")
+            .min(6, "A senha deve conter no mínimo 6 caracteres.")
             .max(30, "A senha deve conter no máximo 30 caracteres."),
         confirmPassword: z
             .string()
-            .min(5, "A senha deve conter no mínimo 5 caracteres.")
+            .min(6, "A senha deve conter no mínimo 6 caracteres.")
             .max(30, "A senha deve conter no máximo 30 caracteres."),
+        terms: z.literal(true, {
+            message: "É necessário aceitar os termos.",
+        }),
     })
     .refine((value) => value.password === value.confirmPassword, {
         message: "As senhas não coincidem.",
