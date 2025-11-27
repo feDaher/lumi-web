@@ -12,9 +12,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        blue: {
-          100: "#E6F6FF",
+        // Cores personalizadas: Roxo Escuro, Roxo Vibrante, Roxo Botão
+        lumi: {
+          dark: '#1D1A39', 
+          light: '#5B41C2',
+          button: '#7D5AFC',
         },
+      },
+      backgroundImage: {
+        // O gradiente roxo
+        'lumi-gradient': 'linear-gradient(135deg, var(--tw-color-lumi-dark), var(--tw-color-lumi-light))',
       },
     },
   },
