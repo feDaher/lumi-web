@@ -14,6 +14,19 @@ export default function LumiLanding() {
     setActiveFaq((prev) => (prev === index ? null : index))
   }
 
+  // NOVA FUNÇÃO: Gerencia o scroll suave e fecha o menu se necessário
+  const handleScroll = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    id: string
+  ) => {
+    e.preventDefault()
+    const element = document.getElementById(id)
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
+      setMenuOpen(false)
+    }
+  }
+
   return (
     <div className="h-full w-full">
       {/* HERO */}
@@ -28,24 +41,28 @@ export default function LumiLanding() {
             {/* NAV DESKTOP */}
             <nav className="hidden md:flex gap-8 lg:gap-10 text-base font-medium text-gray-700">
               <a
-                href="#"
+                href="#sobre"
+                onClick={(e) => handleScroll(e, "sobre")} // ALTERAÇÃO: Scroll suave desktop
                 className="relative group hover:text-purple-600 transition-colors duration-300"
               >
                 Sobre a Lumi
                 <span className="absolute bottom-[-5px] left-0 w-full h-[3px] bg-gradient-to-r from-purple-500 to-pink-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out rounded-full"></span>
               </a>
+              
+              
               <a
                 href="#"
                 className="relative group hover:text-purple-600 transition-colors duration-300"
               >
-                Artigos
+
                 <span className="absolute bottom-[-5px] left-0 w-full h-[3px] bg-gradient-to-r from-purple-500 to-pink-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out rounded-full"></span>
               </a>
+
               <a
                 href="#"
                 className="relative group hover:text-purple-600 transition-colors duration-300"
               >
-                Nossa Equipe
+
                 <span className="absolute bottom-[-5px] left-0 w-full h-[3px] bg-gradient-to-r from-purple-500 to-pink-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out rounded-full"></span>
               </a>
             </nav>
@@ -86,9 +103,9 @@ export default function LumiLanding() {
             {menuOpen && (
               <div className="absolute top-full left-0 w-full bg-white border-t border-gray-200 shadow-md flex flex-col items-center py-6 space-y-4 md:hidden animate-fadeIn z-40">
                 <a
-                  href="#"
+                  href="#sobre"
                   className="text-lg font-medium text-gray-800 hover:text-purple-700 transition-all"
-                  onClick={() => setMenuOpen(false)}
+                  onClick={(e) => handleScroll(e, "sobre")} // ALTERAÇÃO: Scroll suave mobile
                 >
                   Sobre a Lumi
                 </a>
@@ -195,7 +212,10 @@ export default function LumiLanding() {
         </div>
       )}
       {/* ABOUT */}
-      <section className="min-h-screen w-full px-4 sm:px-10 md:px-16 lg:px-24 py-4 flex flex-col items-center justify-center overflow-hidden relative">
+      <section
+        id="sobre" // ALTERAÇÃO: Adicionado ID para âncora
+        className="min-h-screen w-full px-4 sm:px-10 md:px-16 lg:px-24 py-4 flex flex-col items-center justify-center overflow-hidden relative"
+      >
         <h1 className="text-4xl sm:text-4xl md:text-6xl lg:text-7xl font-normal text-purple-900 mb-10 sm:mb-14 tracking-wide text-center relative z-10">
           Sobre a Lumi
         </h1>
@@ -227,9 +247,9 @@ export default function LumiLanding() {
                 situação de vulnerabilidade.
               </p>
               <p>
-                Por meio de recursos inteligentes comoalertas instantâneos,{" "}
-                localização em tempo real econtatos de confiança, a Lumi ajuda a
-                garantir que ajuda nunca esteja longe.
+                Por meio de recursos inteligentes como alertas instantâneos,{" "}
+                localização em tempo real e contatos de confiança, a Lumi ajuda
+                a garantir que ajuda nunca esteja longe.
               </p>
             </div>
           </div>
