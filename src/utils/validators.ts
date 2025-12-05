@@ -35,8 +35,12 @@ export const registerSchema = z
 export type RegisterInput = z.infer<typeof registerSchema>;
 
 export const loginSchema = z.object({
-    login: z.string().min(5),
-    password: z.string().min(5).max(30),
+    login: z.string().min(1, "E-mail é obrigatório.").email("Informe um e-mail válido."),
+    password: z
+        .string()
+        .min(1, "Senha é obrigatória.")
+        .min(6, "A senha deve conter no mínimo 6 caracteres.")
+        .max(30, "A senha deve conter no máximo 30 caracteres."),
 });
 
 export type LoginInput = z.infer<typeof loginSchema>;
