@@ -1,12 +1,13 @@
 import { useCallback, useRef } from "react";
 import { useFormContext, Controller } from "react-hook-form";
 import { maskCPF, cpfNumeric } from "@/utils/validators";
+import { LucideIcon } from "lucide-react";
 
 interface CPFFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
     name: string;
     label: string;
     placeholder: string;
-    icon?: React.ReactNode;
+    icon: LucideIcon;
     debounceMs?: number;
 }
 
@@ -14,7 +15,7 @@ export default function CPFField({
     name,
     label,
     placeholder,
-    icon,
+    icon: Icon,
     debounceMs = 500,
     className = "",
     ...props
@@ -40,9 +41,9 @@ export default function CPFField({
             </label>
 
             <div className="relative">
-                {icon && (
-                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">{icon}</div>
-                )}
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <Icon size={18} className="text-gray-400" />
+                </div>
 
                 <Controller
                     control={control}
