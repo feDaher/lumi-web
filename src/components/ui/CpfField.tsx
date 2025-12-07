@@ -29,7 +29,7 @@ export default function CPFField({
     const error = errors[name]?.message as string | undefined;
     const debounceRef = useRef<NodeJS.Timeout | null>(null);
 
-    const useDebounce = useCallback(() => {
+    const debounceValidate = useCallback(() => {
         if (debounceRef.current) clearTimeout(debounceRef.current);
         debounceRef.current = setTimeout(() => trigger(name), debounceMs);
     }, [trigger, name, debounceMs]);
@@ -61,7 +61,7 @@ export default function CPFField({
                             onChange={(e) => {
                                 const clean = cpfNumeric(e.target.value);
                                 onChange(clean);
-                                useDebounce();
+                                debounceValidate();
                             }}
                             {...props}
                         />
